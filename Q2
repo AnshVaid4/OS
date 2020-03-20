@@ -1,1 +1,8 @@
-
+#include<stdio.h>
+void main()
+{
+int burst[20],p[20],wait_T[20],tat[20],n;
+float avg_wait_T,avg_tat,priority[20];
+printf("Enter number of process:");
+scanf("%d",&n);
+}
