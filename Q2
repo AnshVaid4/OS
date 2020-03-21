@@ -13,7 +13,7 @@ void main()
   scanf("%d",&burst[i]);
   p[i]=i+1;
  }
- //=============================================================
+ //============================   Sort   =================================
  for(i=0;i<5;i++)
  {
   //for sorting burst time and processes
@@ -30,4 +30,6 @@ void main()
   p[i]=p[pos];//sorting process according to burst time
   p[pos]=temp;
  }
+//======================== Waiting time====================================
+
 }
