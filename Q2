@@ -19,8 +19,15 @@ void main()
   //for sorting burst time and processes
   pos=i;
   for(j=i+1;j<5;j++)
-  {//for min burst time
+  {//for location of min burst time
    if(burst[j]<burst[pos])
    pos=j;
   }
+  temp=burst[i];
+  burst[i]=burst[pos];
+  burst[pos]=temp;
+  temp=p[i];
+  p[i]=p[pos];//sorting process according to burst time
+  p[pos]=temp;
+ }
 }
