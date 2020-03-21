@@ -4,15 +4,16 @@ void main()
  int burst[20],p[20],wait_T[20],tat[20];
  int arrival_T[20];
  float avg_wait_T,avg_tat,priority[20];
+ 
  printf("There are 5 processes.\n");
  printf("Enter Estimated Time:\n");
  for(i=0;i<5;i++)
- {
+ {//for taking burst time of all processes from user
   printf("p%d:",i+1);
   scanf("%d",&burst[i]);
   p[i]=i+1;
  }
- 
+ //=============================================================
  for(i=0;i<5;i++)
  {
   //for sorting burst time and processes
