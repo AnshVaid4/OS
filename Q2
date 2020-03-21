@@ -12,8 +12,14 @@ void main()
   scanf("%d",&burst[i]);
   p[i]=i+1;
  }
+ 
  for(i=0;i<5;i++)
  {
   //for sorting burst time and processes
- }
+  pos=i;
+  for(j=i+1;j<5;j++)
+  {//for min burst time
+   if(burst[j]<burst[pos])
+   pos=j;
+  }
 }
