@@ -39,5 +39,10 @@ void main()
   wait_T[i]+=burst[j];
   total+=wait_T[i];    //for calculating avg waiting time
  }
+ avg_wait_T=(float)total/5; //average waiting time
+ 
 //======================== Calculate Priority =============================
+ for(i=0;i<5;i++)
+ priority[i]=1.0+ (float )wait_T[i]/(float )burst[i];
+ 
 }
