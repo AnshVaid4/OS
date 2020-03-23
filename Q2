@@ -44,5 +44,23 @@ void main()
 //======================== Calculate Priority =============================
  for(i=0;i<5;i++)
  priority[i]=1.0+ (float )wait_T[i]/(float )burst[i];
- 
+//============= Sorting Priority in Higher to lower form ==================
+ for(i=0;i<5;i++)
+ {
+ pos=i;
+ for(j=i+1;j<5;j++)
+ {
+ if(priority[j]<priority[pos])
+ pos=j;
+ }
+
+ temp=priority[i];
+ priority[i]=priority[pos];
+ priority[pos]=temp;
+ temp=p[i];
+ p[i]=p[pos];
+ p[pos]=temp;
+ }
+
+
 }
