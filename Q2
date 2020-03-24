@@ -90,5 +90,6 @@ void main()
  //============================ turnaround time ==============================
  printf("\nTurnaround Time:\n");
  total=0;
+ 
 
 }
