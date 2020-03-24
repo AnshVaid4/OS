@@ -61,6 +61,34 @@ void main()
  p[i]=p[pos];
  p[pos]=temp;
  }
-
+ //==================== process according to priority =======================
+ printf("\nProcess Sequencee");
+ printf("\n<");
+ for(i=0;i<5;i++)
+ {
+ printf("p%d ",p[i]);
+ }
+ printf(">"); 
+ 
+ printf("\n");
+ //============================ burst time ===================================
+ printf("\nEstimated Time: \n");
+ for(j=0;j<5;j++)
+ {
+ printf("p%d\t ->  %d\n",p[j],burst[j]);
+ }
+ printf("\n");
+ 
+ //============================ waiting time =================================
+ printf("\nWaiting Time:\n");
+ for(i=0;i<5;i++)
+ {
+ printf("p%d\t ->  %d\n",p[i],wait_T[i]);
+ }
+ printf("\n");
+ 
+ //============================ turnaround time ==============================
+ printf("\nTurnaround Time:\n");
+ total=0;
 
 }
