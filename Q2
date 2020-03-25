@@ -1,16 +1,52 @@
 #include<stdio.h>
+#include<process.h>
 void main()
 {
  int burst[20],p[20],wait_T[20],at[20],done[20],bt[20],tat[20],nominate[20],tot,pos,temp,temp1,size=0,i,k,l=0,j,total=0,TW=0,n,x;
  int arrival_T[20];
  float priority[20],temp2;
-  
+ 
  void init()                            // to initialize nominate array with 99999
  { 
   int i;
   for(i=0;i<tot;i++)
   nominate[i]=99999;
  }
- 
-//=================================main end===================================
+
+ void init2()                            // to initialize priority array with 99999.0
+ {int i;
+  for(i=0;i<tot;i++)
+  priority[i]=99999.0;
+ }
+
+ int prsize()                            // to get size of priority array(non 99999.0 elements)
+ {
+  int pos,size=0;
+  if(priority[0]!=99999.0)
+  {
+   pos=0;
+   while(priority[pos]!=99999.0)
+   {
+ 	size++;
+ 	pos++;
+   }
+  } 
+  return size;
+ }
+
+ int nomsize()                            //to get the size of nominated array(non 99999 elements)
+ {
+  int pos,size=0;
+  if(priority[0]!=99999)
+  {
+   pos=0;
+   while(priority[pos]!=99999)
+   {
+ 	size++;
+ 	pos++;
+   }
+  }
+  return size;
+ }
+ //=================================main end===================================
 }
