@@ -4,7 +4,7 @@ void main()
 {
  int burst[20],p[20],wait_T[20],at[20],done[20],bt[20],tat[20],nominate[20],tot,pos,temp,temp1,size=0,i,k,l=0,j,total=0,TW=0,n,x;
  int arrival_T[20];
- float priority[20],temp2;
+ float avtat=0.0,avbt=0.0,priority[20],temp2;
  
  void init()                            // to initialize nominate array with 99999
  { 
@@ -49,17 +49,14 @@ void main()
   return size;
  }
  //============================================================================= MAIN PROGRAM STARTS
+ 
  printf("Enter number of processes ");                            //getting total no. of processes
  scanf("%d",&tot); 
  init();
  init2();
  
- if(tot>=1 )
+ if(tot>=1 && tot<21)
  {
- 	if( tot>=21)
- 	{printf("\nStack Overflow");
- 	 exit(0);
-    }
  printf("Enter Estimated Time:\n");                               //getting burst time of all processes
  for(i=0;i<tot;i++)
  {
@@ -83,5 +80,43 @@ void main()
    if(at[j]<at[pos])
    pos=j;
   }
+  temp=at[i];
+  at[i]=at[pos];
+  at[pos]=temp;
+  temp=p[i];
+  temp1=burst[i];
+  p[i]=p[pos];
+  burst[i]=burst[pos];
+  p[pos]=temp;
+  burst[pos]=temp1;
+ }
+ //===================== initialization of done,bt,tat array for very first priority
+ k=0;
+ done[l]=p[0];
+ bt[l]=burst[0];
+ tat[l]=burst[0];
+ //=================================================================================
+ k++;l++;
+ wait_T[0]=0;
+ TW=burst[0]+TW;                               //tracking total time elapsed
+ i=1;
+ 
+ //=================== label
+ label:
+ n=nomsize();
+ x=0;
+ if(n==0)                                      //if whole nomination array is 99999
+ {
+  for(i;i<tot;i++)
+  {
+   if(at[i]<=TW)
+   {
+  	nominate[x]=i;
+  	priority[x]=1.0+((float)TW-(float)at[nominate[x]])/(float)burst[nominate[x]];
+    x++;
+   }
+  }
+ }
+
  //=================================main end===================================
 }
