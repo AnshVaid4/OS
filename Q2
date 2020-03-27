@@ -122,6 +122,104 @@ void main()
    }
   }
  }
+ else{
+ 	  j=0;
+ 	  while(nominate[j]!=99999)
+	  {
+	   priority[x]=1.0+((float)TW-(float)at[nominate[x]])/(float)burst[nominate[x]];
+	   j++;
+	   x++;
+	   k++;
+      }
+      i=k;
+      for(i;i<tot;i++)
+      {
+       if(i<tot && at[i]<=TW)
+       {
+  	    nominate[x]=i;
+  	    priority[x]=1.0+((float)TW-(float)at[nominate[x]])/(float)burst[nominate[x]];
+        x++;
+	   }
+      }
+     }
 
- //=================================main end===================================
+ 
+ size=prsize();
+ 
+ if(size>1)                               //number of non 99999.0 elements in priority array
+ {                                        //sorting priority of process
+  for(i=0;i<size-1;i++)
+  {
+   for(j=i+1;j<size;j++)
+   {
+	if(priority[i]<priority[j])
+	{
+	 temp2=priority[i];
+	 temp=nominate[i];
+	 priority[i]=priority[j];
+	 nominate[i]=nominate[j];
+	 priority[j]=temp2;
+	 nominate[j]=temp;
+	}
+   }
+  } 
+ }
+
+ if(size==1)
+ {   
+  i=0;
+  done[l]=p[nominate[i]];
+  bt[l]=burst[nominate[i]];
+  tat[l]=burst[nominate[i]];
+  wait_T[l]=TW-at[nominate[i]];
+  k++;l++;
+  TW=TW+burst[nominate[i]];
+ }
+ 
+ if(size>1)
+ {
+  i=0;
+  done[l]=p[nominate[i]];
+  bt[l]=burst[nominate[i]];
+  tat[l]=burst[nominate[i]];
+  wait_T[l]=TW-at[nominate[i]];
+  k++;l++;
+  TW=TW+burst[nominate[i]];
+  i++;
+  while(nominate[i]!=99999)
+  {
+   temp=nominate[i];
+   temp2=priority[i];
+   nominate[i-1]=temp;
+   priority[i-1]=temp2;
+   i++;
+  }
+  nominate[i-1]=99999;
+  priority[i-1]=99999.0;
+ }
+
+ k=l;
+ i=k;
+ j=0;
+
+ if(k>tot-1)
+ goto end;
+ goto label;
+
+ end:
+ 
+ for(i=0;i<tot;i++)
+ {
+  burst[i]=bt[i];
+  p[i]=done[i];
+ }
+ printf("\nSequence of processes\t Waiting time\t\t Burst Time\t\t Turnaround Time\n");
+ for(i=0;i<tot;i++)
+ printf("p%d\t\t\t\t%d\t\t\t%d\t\t\t%d\n",p[i],wait_T[i],burst[i],tat[i]+wait_T[i]); 
+ }
+ else
+ {
+  printf("\nSORRY no processes found");
+  exit(0);
+ }
 }
