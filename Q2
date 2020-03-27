@@ -50,7 +50,7 @@ void main()
  }
  //============================================================================= MAIN PROGRAM STARTS
  
- printf("Enter number of processes ");                            //getting total no. of processes
+ printf("Enter number of processes(between 0 and 21) ");                            //getting total no. of processes
  scanf("%d",&tot);
  if(tot>=21)
  {
